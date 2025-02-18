@@ -22,6 +22,8 @@ interface User {
   uid: string
   name: string
   email: string
+  password?: string
+  image?: string
   role: "user" | "admin"
   orders: any[]
 }
@@ -68,6 +70,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       uid: user.uid,
       name,
       email,
+      password,
       role: "user",
       orders: []
     }
@@ -92,6 +95,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         uid: user.uid,
         name: user.displayName || "",
         email: user.email || "",
+        image: user.photoURL || "",
         role: "user",
         orders: []
       }
