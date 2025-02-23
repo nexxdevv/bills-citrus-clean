@@ -21,7 +21,7 @@ const Header = () => {
         <Link href="/" className="leading-none">
           <>
             <h1 className={`${pacifico.className}  text-2xl tracking-wide dark:text-white`}>
-              Bill's
+              Bill&apos;s
             </h1>
             <h1 className={`${chicle.className}  text-3xl -mt-2 tracking-tight dark:text-gray-200`}>
               CITRUS CLEAN

@@ -9,7 +9,7 @@ export default function SuccessPage() {
   const [orderSaved, setOrderSaved] = useState(false)
 
   useEffect(() => {
-    if (!session_id) return
+    if (!session_id || orderSaved) return
 
     const saveOrder = async () => {
       try {
@@ -27,7 +27,7 @@ export default function SuccessPage() {
     }
 
     saveOrder()
-  }, [session_id]) // Removed `orderSaved` from dependencies
+  }, [session_id, orderSaved]) 
 
   return (
     <div>
