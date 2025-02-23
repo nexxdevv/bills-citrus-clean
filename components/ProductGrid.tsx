@@ -62,7 +62,7 @@ export default function ProductGrid() {
         {products.map((product) => (
           <Card
             key={product.id}
-            className="shadow-lg rounded-2xl overflow-hidden bg-[#B8D8B4] "
+            className="shadow-lg rounded-2xl overflow-hidden bg-card "
           >
             <div className="relative w-full">
               <Image

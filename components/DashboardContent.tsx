@@ -43,7 +43,7 @@ export default function DashboardContent() {
   }
 
   return (
-    <div className="flex flex-col min-h-screen p-6 text-white">
+    <div className="flex flex-col min-h-screen p-6 ">
       <h2 className="text-3xl font-bold mb-6 ">Dashboard</h2>
 
       {/* User Info Section */}
@@ -52,21 +52,21 @@ export default function DashboardContent() {
           <div className="w-16 h-16 flex items-center justify-center border border-gray-400 rounded-full bg-gray-200 text-xl font-semibold text-gray-700">
             {user.name.charAt(0).toUpperCase()}
           </div>
-          <p className="mt-2 text-xl font-medium  text-white">{user.name}</p>
+          <p className="mt-2 text-xl font-medium ">{user.name}</p>
         </div>
       </div>
 
-      <h2 className="text-2xl font-semibold  mb-4 text-white">Your Orders</h2>
+      <h2 className="text-2xl font-semibold  mb-4">Your Orders</h2>
 
       {/* Orders List */}
-      <div className="w-full max-w-md space-y-4">
+      <div className="w-full max-w-md space-y-2">
         {orders.length === 0 ? (
           <p className="text-gray-600">You have no recent orders.</p>
         ) : (
           orders.map((order) => (
             <div
               key={order.id}
-              className="flex items-start bg-white rounded-xl shadow-sm p-4 w-full"
+              className="flex items-start bg-card rounded-xl shadow-sm p-4 w-full"
             >
               {/* Product Image */}
               <Image
@@ -89,7 +89,6 @@ export default function DashboardContent() {
               </div>
               <div className="flex flex-col justify-between gap-3">
                 <p className="text-sm text-gray-600 text-right">{order.date}</p>
-                <p className="text-sm  text-white">spacer</p>
               </div>
             </div>
           ))

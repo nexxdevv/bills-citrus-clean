@@ -1,11 +1,12 @@
-import React from 'react'
+import React from "react"
 import SuccessPageContent from "@/components/SuccessPageContent"
+import { Suspense } from "react" // Import Suspense
 
 const SuccessPage = () => {
   return (
-    <>
-    <SuccessPageContent />
-    </>
+    <Suspense fallback={<p>Loading...</p>}>
+      <SuccessPageContent />
+    </Suspense>
   )
 }
 

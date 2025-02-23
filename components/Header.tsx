@@ -5,6 +5,7 @@ import React from "react";
 import { Pacifico, Chicle } from "next/font/google";
 import { ShoppingBag, User } from "lucide-react";
 import { useCart } from "@/context/CartContext";
+import ThemeToggle from "./ThemeToggle";
 
 const pacifico = Pacifico({ subsets: ["latin"], weight: "400" });
 const chicle = Chicle({ subsets: ["latin"], weight: "400" });
@@ -46,6 +47,7 @@ const Header = () => {
               </span>
             )}
           </Link>
+          <ThemeToggle />
         </div>
       </div>
     </header>

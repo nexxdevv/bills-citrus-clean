@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react"
 import { useSearchParams } from "next/navigation"
-import { Suspense } from "react" // Import Suspense
 
 const SuccessPageContent = () => {
   // Separate component for content
@@ -19,7 +18,10 @@ const SuccessPageContent = () => {
         const res = await fetch(`/api/save-order?session_id=${session_id}`)
         if (res.ok) {
           setOrderSaved(true)
-          console.log("Order saved successfully.")
+          //   wait 5 seconds and forward to homepage
+          setTimeout(() => {
+            window.location.href = "/"
+          }, 5000)
         } else {
           console.error("Failed to save order:", res.status)
         }

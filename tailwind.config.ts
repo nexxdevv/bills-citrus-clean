@@ -11,7 +11,9 @@ export default {
     extend: {
       colors: {
         background: "var(--background)",
-        foreground: "var(--foreground)"
+        foreground: "var(--foreground)",
+        card: "#B8D8B4",
+        darkMode: "#1F1E25"
       }
     }
   },

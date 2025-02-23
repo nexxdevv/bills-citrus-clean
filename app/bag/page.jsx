@@ -26,7 +26,7 @@ const BagPage = () => {
             {cart.map((item) => (
               <div
                 key={item.id}
-                className="flex items-center justify-between py-4 px-6 border-b border-gray-200 dark:border-gray-700 rounded-xl shadow-sm dark:bg-gray-800"
+                className="flex items-center justify-between py-4 px-6 border-b border-gray-200 dark:border-gray-700 bg-card rounded-xl shadow-sm dark:bg-gray-800"
               >
                 {/* Product Image */}
                 <Image
@@ -51,7 +51,7 @@ const BagPage = () => {
                 </div>
 
                 {/* Quantity Controls */}
-                <div className="flex  justify-center items-center gap-2 flex-col-reverse">
+                <div className="flex  justify-center items-center gap-2 flex-col-reverse ml-2">
                   {/* Change the decrement button to a trash button if quantity is 1 */}
                   <button
                     onClick={() =>
