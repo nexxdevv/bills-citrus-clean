@@ -15,7 +15,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="dark:bg-darkMode">
+      <body className="dark:bg-darkMode mt-20">
         <AuthProvider>
           <CartProvider>
             <Header />

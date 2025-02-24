@@ -26,7 +26,7 @@ const BagPage = () => {
             {cart.map((item) => (
               <div
                 key={item.id}
-                className="flex items-center justify-between py-4 px-6 border-b border-gray-200 dark:border-gray-700 bg-card rounded-xl shadow-sm dark:bg-gray-800"
+                className="flex items-center justify-between py-4 px-6 border-b border-gray-200 dark:border-gray-700 bg-card rounded-xl shadow-sm dark:bg-card"
               >
                 {/* Product Image */}
                 <Image
@@ -39,13 +39,13 @@ const BagPage = () => {
 
                 {/* Product Details */}
                 <div className="flex-1 flex flex-col gap-1 ml-4">
-                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
+                  <h3 className="text-xl font-semibold text-gray-900 ">
                     {item.name}
                   </h3>
-                  <p className="text-sm text-gray-600 dark:text-gray-400">
+                  <p className="text-sm text-gray-600 ">
                     {item.weight}
                   </p>
-                  <p className="text-xl font-semibold text-gray-900 dark:text-white">
+                  <p className="text-xl font-semibold text-gray-900 ">
                     ${item.price}
                   </p>
                 </div>
@@ -67,7 +67,7 @@ const BagPage = () => {
                       <Minus size={18} />
                     )}
                   </button>
-                  <span className="w-8 text-xl text-center font-medium text-gray-700 dark:text-gray-300">
+                  <span className="w-8 text-xl text-center font-medium text-gray-700 ">
                     {item.quantity}
                   </span>
                   <button

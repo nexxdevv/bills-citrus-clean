@@ -13,7 +13,8 @@ export default {
         background: "var(--background)",
         foreground: "var(--foreground)",
         card: "#B8D8B4",
-        darkMode: "#1F1E25"
+        darkMode: "#1F1E25",
+        darkLight: "#2B2A32"
       }
     }
   },
