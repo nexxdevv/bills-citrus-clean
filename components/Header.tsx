@@ -1,7 +1,7 @@
 "use client"
 
 import Link from "next/link"
-import React, { useEffect, useState, useRef } from "react"
+import React, { useEffect, useState } from "react"
 import { Pacifico, Sofia_Sans } from "next/font/google"
 import { ShoppingBag, User } from "lucide-react"
 import { useCart } from "@/context/CartContext"
