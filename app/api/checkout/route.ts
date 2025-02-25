@@ -10,7 +10,7 @@ export async function POST(req: Request) {
     const { product, userId, email, cart } = await req.json();
 
     let line_items = [];
-    let metadata = { userId, email }; // Start building metadata
+    const metadata = { userId, email }; // Start building metadata
 
     if (cart && Array.isArray(cart) && cart.length > 0) {
       line_items = cart.map((item: any) => ({

@@ -35,7 +35,7 @@ const SuccessPageContent = () => {
     }
 
     saveOrder()
-  }, [session_id, orderSaved])
+  }, [session_id, orderSaved, clearCart])
 
   return (
     <div>
