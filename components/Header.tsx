@@ -21,8 +21,6 @@ const Header = () => {
   const [lastScrollY, setLastScrollY] = useState(0)
 
   useEffect(() => {
-    
-
     const handleScroll = () => {
       const scrollY = window.scrollY
 
@@ -41,7 +39,9 @@ const Header = () => {
 
   return (
     <header
-      className={`fixed top-0 left-0 w-full bg-white dark:bg-darkMode shadow-md transition-transform duration-300 z-50 ${
+      // add image to header
+
+      className={`fixed top-0 left-0 w-full dark:bg-darkMode shadow-sm transition-transform duration-300 z-50 bg-lightMode ${
         visible ? "translate-y-0" : "-translate-y-full"
       }`}
     >
@@ -49,12 +49,12 @@ const Header = () => {
         <Link href="/" className="leading-none">
           <>
             <h1
-              className={`${pacifico.className} scale-[0.85] text-2xl tracking-wide dark:text-white`}
+              className={`${pacifico.className} scale-[0.85] text-2xl tracking-wide text-brandGreen dark:text-white`}
             >
               Bill&apos;s
             </h1>
             <h1
-              className={`${sofia_sans.className} text-2xl font-bold -mt-[8px] tracking-tight dark:text-gray-200`}
+              className={`${sofia_sans.className} text-2xl font-bold -mt-[8px] tracking-tighter leading-none text-brandGreen dark:text-white`}
             >
               CITRUS CLEAN
             </h1>
@@ -63,17 +63,17 @@ const Header = () => {
         <div className="flex items-center gap-6">
           <Link
             href="/dashboard"
-            className="dark:text-gray-300 dark:hover:text-white transition"
+            className="text-brandGreen dark:text-white dark:hover:text-white transition"
           >
             <User size={24} />
           </Link>
           <Link
             href="/bag"
-            className="relative dark:text-gray-300 dark:hover:text-white transition"
+            className="relative text-brandGreen dark:text-white dark:hover:text-white transition"
           >
             <ShoppingBag size={24} />
             {totalItems > 0 && (
-              <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold w-5 h-5 flex items-center justify-center rounded-full">
+              <span className="absolute -top-2 -right-2 bg-orange-500 text-white text-xs font-bold w-5 h-5 flex items-center justify-center rounded-full">
                 {totalItems}
               </span>
             )}

@@ -31,7 +31,7 @@ export default function DashboardContent() {
       const userSnap = await getDoc(userRef)
 
       if (userSnap.exists()) {
-        setOrders(userSnap.data().orders || [])
+        setOrders((userSnap.data().orders || []).reverse())
       }
     }
 
@@ -43,30 +43,47 @@ export default function DashboardContent() {
   }
 
   return (
-    <div className="flex flex-col min-h-screen p-6 ">
-      <h2 className="text-3xl font-bold mb-6 ">Dashboard</h2>
+    <div className="flex flex-col min-h-screen py-5 ">
+      <h2 className="text-3xl font-bold mb-5 text-brandGreen px-5 dark:text-slate-50">Dashboard</h2>
 
       {/* User Info Section */}
-      <div className="flex flex-col  mb-8">
-        <div className="flex items-center gap-4">
-          <div className="w-16 h-16 flex items-center justify-center border border-gray-400 rounded-full bg-gray-200 text-xl font-semibold text-gray-700">
-            {user.name.charAt(0).toUpperCase()}
+      <div className="bg-lightMode dark:bg-darkLight dark:border-slate-800 p-5 border-y gap-5 flex flex-col justify-between">
+        <div className="flex flex-col">
+          <div className="flex items-center gap-4">
+            <div className="w-16 h-16 flex items-center justify-center border border-brandGreen rounded-full bg-gray-200 text-xl font-semibold text-gray-700">
+              {user.name.charAt(0).toUpperCase()}
+            </div>
+            <div className="flex flex-col gap-none">
+              <p className="mt-2 text-lg font-medium leading-none dark:text-slate-50">
+                {user.name}
+              </p>
+              <p className="mt-2 text-sm font-medium leading-none dark:text-slate-50">
+                {user.email}
+              </p>
+            </div>
           </div>
-          <p className="mt-2 text-xl font-medium ">{user.name}</p>
         </div>
+        <button
+          onClick={logout}
+          className="w-32 px-6 py-2 bg-red-500 text-white font-medium rounded-xl hover:bg-gray-700 transition"
+        >
+          Logout
+        </button>
       </div>
 
-      <h2 className="text-2xl font-semibold  mb-4">Your Orders</h2>
+      <h2 className="text-2xl font-semibold text-brandGreen dark:text-slate-50 mt-5 px-5">
+        Your Orders
+      </h2>
 
       {/* Orders List */}
-      <div className="w-full max-w-md space-y-2">
+      <div className="w-full max-w-md flex flex-col divide-y dark:divide-slate-800 mt-5">
         {orders.length === 0 ? (
           <p className="text-gray-600">You have no recent orders.</p>
         ) : (
           orders.map((order) => (
             <div
               key={order.id}
-              className="flex items-start bg-card rounded-xl shadow-sm p-4 w-full"
+              className="flex items-start bg-lightMode dark:bg-darkLight p-4 w-full"
             >
               {/* Product Image */}
               <Image
@@ -74,33 +91,26 @@ export default function DashboardContent() {
                 alt={order.product_name}
                 width={60}
                 height={60}
-                className="rounded-xl object-cover"
+                className="rounded-full object-contain bg-white aspect-square "
               />
 
               {/* Order Details */}
-              <div className="flex-1 flex flex-col gap-3 ml-4">
-                <p className="text-xl font-semibold text-gray-900">
-                  {order.product_name}
-                </p>
-                <p className="text-sm text-gray-700">Qty: {order.quantity}</p>
-                <p className="text-xl font-semibold text-gray-900">
-                  ${order.total}
-                </p>
+              <div className="flex-1 flex flex-col gap-1 ml-2">
+                <div className="flex items-center justify-between">
+                  <p className=" font-semibold text-gray-900 dark:text-slate-50 leading-none">
+                    ({order.quantity}) {order.product_name}
+                  </p>
+                  <p className="text-sm flex-1 text-gray-600 text-right dark:text-slate-50 leading-none">
+                    {order.date}
+                  </p>
+                </div>
+                <p className=" font-medium text-gray-900 dark:text-slate-50">${order.total}</p>
               </div>
-              <div className="flex flex-col justify-between gap-3">
-                <p className="text-sm text-gray-600 text-right">{order.date}</p>
-              </div>
+              <div className="flex flex-col justify-between gap-3"></div>
             </div>
           ))
         )}
       </div>
-
-      <button
-        onClick={logout}
-        className="mt-6 px-6 py-2 bg-gray-800 text-white rounded-xl hover:bg-gray-700 transition"
-      >
-        Logout
-      </button>
     </div>
   )
 }

@@ -3,7 +3,14 @@
 import { createContext, useContext, useState, useEffect } from "react"
 
 const CartContext = createContext({
-  cart: [] as { id: string; quantity: number }[],
+  cart: [] as {
+    id: string
+    quantity: number
+    price?: number
+    name?: string
+    image?: string
+    weight?: string
+  }[],
   addItem: (item: { id: string }) => {},
   removeItem: (id: string) => {},
   decreaseQuantity: (id: string) => {},

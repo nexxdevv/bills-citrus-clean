@@ -14,7 +14,9 @@ export default {
         foreground: "var(--foreground)",
         card: "#B8D8B4",
         darkMode: "#1F1E25",
-        darkLight: "#2B2A32"
+        darkLight: "#2B2A32",
+        lightMode: "#e9edd0",
+        brandGreen: "#3c5c44"
       }
     }
   },
