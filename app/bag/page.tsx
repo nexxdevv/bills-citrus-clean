@@ -59,7 +59,7 @@ const BagPage = () => {
                 {/* Product Image */}
                 <Image
                   src={item.image || "/placeholder.jpg"} // Use placeholder if no image
-                  alt={item?.name}
+                  alt={item?.name || "Product"}
                   width={60}
                   height={60}
                   className="rounded-xl object-contain aspect-square bg-white"
