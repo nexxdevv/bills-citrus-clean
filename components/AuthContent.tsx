@@ -3,6 +3,8 @@
 import { useState, useEffect } from "react"
 import { useAuth } from "@/context/AuthContext"
 import { useRouter } from "next/navigation"
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
 
 export default function AuthPage() {
   const { login, register, loginWithGoogle, user } = useAuth()
@@ -23,60 +25,63 @@ export default function AuthPage() {
     e.preventDefault()
     if (isRegistering) {
       await register(name, email, password)
-      router.push("/dashboard")
     } else {
       await login(email, password)
-      router.push("/dashboard")
     }
+    router.push("/dashboard")
   }
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen p-4">
-      <h1 className="text-2xl font-bold mb-4">
-        {isRegistering ? "Sign Up" : "Sign In"}
-      </h1>
-      <form onSubmit={handleSubmit} className="flex flex-col w-80 space-y-4">
-        {isRegistering && (
-          <input
-            type="text"
-            placeholder="Name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            className="p-2 border rounded"
+    <div className="flex flex-col items-center justify-center min-h-screen px-6 md:px-12  text-gray-900">
+      <div className="w-full max-w-md bg-lightMode p-8 rounded-2xl shadow-xl">
+        <h1 className="text-3xl font-semibold text-center mb-6">
+          {isRegistering ? "Create an Account" : "Welcome Back"}
+        </h1>
+        <form onSubmit={handleSubmit} className="space-y-4">
+          {isRegistering && (
+            <Input
+              type="text"
+              placeholder="Full Name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              className="w-full"
+            />
+          )}
+          <Input
+            type="email"
+            placeholder="Email Address"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            className="w-full"
           />
-        )}
-        <input
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          className="p-2 border rounded"
-        />
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          className="p-2 border rounded"
-        />
-        <button type="submit" className="p-2 bg-blue-500 text-white rounded">
-          {isRegistering ? "Register" : "Sign In"}
-        </button>
-      </form>
-      <button
-        onClick={loginWithGoogle}
-        className="mt-4 p-2 bg-red-500 text-white rounded"
-      >
-        Sign in with Google
-      </button>
-      <p
-        className="mt-4 cursor-pointer text-blue-600"
-        onClick={() => setIsRegistering(!isRegistering)}
-      >
-        {isRegistering
-          ? "Already have an account? Sign In"
-          : "No account? Sign Up"}
-      </p>
+          <Input
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            className="w-full"
+          />
+          <Button type="submit" className="w-full text-lg">
+            {isRegistering ? "Sign Up" : "Sign In"}
+          </Button>
+        </form>
+        <div className="mt-6 flex flex-col items-center space-y-3">
+          <Button
+            onClick={loginWithGoogle}
+            className="w-full bg-gray-900 text-white hover:bg-gray-700"
+          >
+            Continue with Google
+          </Button>
+          <p
+            className="text-gray-600 text-sm cursor-pointer hover:underline"
+            onClick={() => setIsRegistering(!isRegistering)}
+          >
+            {isRegistering
+              ? "Already have an account? Sign In"
+              : "Don't have an account? Sign Up"}
+          </p>
+        </div>
+      </div>
     </div>
   )
 }
