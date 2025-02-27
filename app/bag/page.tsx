@@ -15,7 +15,7 @@ const BagPage = () => {
     0
   )
 
-  const handleBuyNow = async () => {
+  const handleBuyNow = async (cart: any) => {
     try {
       const res = await fetch("/api/checkout", {
         method: "POST",
@@ -32,7 +32,7 @@ const BagPage = () => {
 
       const { url } = await res.json()
       if (url) {
-        window.location.href = url
+        window.location.href = url // Redirect after a successful response
       }
     } catch (error) {
       console.error("Checkout error:", error)
@@ -122,13 +122,12 @@ const BagPage = () => {
               >
                 Empty Bag
               </button>
-              <Link
-                href="/checkout"
-                onClick={handleBuyNow}
-                className="flex-1 bg-orange-500 text-white font-medium flex items-center justify-center hover:bg-orange-400 transition rounded-xl py-2 hover:inner-shadow-md hover:shadow-orange-500/50"
+              <button
+                onClick={() => handleBuyNow(cart)}
+                className="flex-1 bg-orange-500 text-white font-medium flex items-center justify-center hover:bg-orange-400 transition rounded-xl py-2 hover:shadow-md hover:shadow-orange-500/50 h-[65px]"
               >
                 Checkout
-              </Link>
+              </button>
             </div>
           </div>
         </>

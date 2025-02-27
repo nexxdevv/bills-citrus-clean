@@ -17,6 +17,8 @@ type Product = {
   image: string
   weight: string
   price: number
+  description: string
+  quantity: number
 }
 
 const PRODUCTS_LIMIT = 2 // Define limit as a constant
@@ -85,12 +87,12 @@ export default function ProductGrid() {
   }
 
   return (
-    <div className="max-w-5xl-lg mx-auto px-5 pb-8 pt-10">
+    <div className="max-w-5xl-lg mx-auto px-5 py-10">
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-12">
         {products.map((product) => (
           <Card
             key={product.id}
-            className="shadow-lg rounded-2xl  bg-lightMode dark:bg-darkLight  z-10 pb-20 relative"
+            className="shadow-lg rounded-2xl  bg-lightMode dark:bg-darkLight  z-10 pb-4 relative"
           >
             <div className="w-full bg-white rounded-t-2xl shadow-sm">
               <Image
@@ -102,9 +104,8 @@ export default function ProductGrid() {
                 priority
               />
             </div>
-
             <CardContent className="pt-4 px-5 flex flex-col gap-1 items-center">
-              <div className="flex items-center gap-3">
+              <div className="flex flex-col items-center gap-1">
                 <h2 className="text-xl font-semibold dark:text-white">
                   {product.name}
                 </h2>
@@ -116,16 +117,14 @@ export default function ProductGrid() {
                 ${product.price}
               </p>
             </CardContent>
-
             {/* Button Group: Clipped Onto the Bottom of the Card */}
-            <div className="absolute bottom-7 left-0 w-full flex justify-between px-5 translate-y-1/2 z-20">
+            <div className="flex gap-5 px-5 mt-5">
               <Button
                 onClick={() => addItem(product)}
-                className="flex-1 items-center text-md text-black font-medium hover:bg-gray-50 transition rounded-b-xl  shadow-md bg-[#F0F0F4]  flex justify-center"
+                className="flex-1 items-center text-md text-black font-medium hover:bg-gray-50 transition rounded-b-xl  shadow-md bg-[#F0F0F4] h-[65px] flex justify-center"
               >
                 <ShoppingBag />
               </Button>
-              <div className="w-4"></div> {/* Spacer */}
               <Button
                 onClick={() => handleBuyNow(product)}
                 className="flex-1 items-center font-medium bg-orange-500 text-white hover:bg-orange-400 transition text-md rounded-b-xl  shadow-md h-[65px] flex justify-center"

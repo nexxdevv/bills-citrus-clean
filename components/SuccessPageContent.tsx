@@ -21,7 +21,6 @@ const SuccessPageContent = () => {
         const res = await fetch(`/api/save-order?session_id=${session_id}`)
         if (res.ok) {
           setOrderSaved(true)
-          //   wait 5 seconds and forward to homepage
           setTimeout(() => {
             clearCart()
             window.location.href = "/dashboard"

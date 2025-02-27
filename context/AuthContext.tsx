@@ -22,10 +22,8 @@ interface User {
   uid: string
   name: string
   email: string
-  password?: string
   image?: string
   role: "user" | "admin"
-  orders: any[]
 }
 
 interface AuthContextType {
@@ -70,9 +68,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       uid: user.uid,
       name,
       email,
-      password,
-      role: "user",
-      orders: []
+      role: "user"
     }
     await setDoc(doc(db, "users", user.uid), newUser)
     setUser(newUser)
@@ -87,6 +83,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   }
 
   const loginWithGoogle = async () => {
+    googleProvider.setCustomParameters({ prompt: "select_account" })
     const { user } = await signInWithPopup(auth, googleProvider)
     const userDoc = await getDoc(doc(db, "users", user.uid))
 
@@ -96,8 +93,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         name: user.displayName || "",
         email: user.email || "",
         image: user.photoURL || "",
-        role: "user",
-        orders: []
+        role: "user"
       }
       await setDoc(doc(db, "users", user.uid), newUser)
       setUser(newUser)

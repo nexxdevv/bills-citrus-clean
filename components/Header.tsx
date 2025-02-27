@@ -1,7 +1,7 @@
 "use client"
 
 import Link from "next/link"
-import React, { useEffect, useState } from "react"
+import React from "react"
 import { Pacifico, Sofia_Sans } from "next/font/google"
 import { ShoppingBag, User } from "lucide-react"
 import { useCart } from "@/context/CartContext"
@@ -17,34 +17,8 @@ const Header = () => {
   const { cart } = useCart()
   const totalItems = cart.reduce((acc, item) => acc + item.quantity, 0)
 
-  const [visible, setVisible] = useState(true)
-  const [lastScrollY, setLastScrollY] = useState(0)
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollY = window.scrollY
-
-      if (scrollY > lastScrollY + 4) {
-        setVisible(false) // Hide only if scrolled down past header height
-      } else if (scrollY < lastScrollY) {
-        setVisible(true) // Show when scrolling up
-      }
-
-      setLastScrollY(scrollY)
-    }
-
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [lastScrollY]) // Depend on headerHeight
-
   return (
-    <header
-      // add image to header
-
-      className={`fixed top-0 left-0 w-full dark:bg-darkMode shadow-sm transition-transform duration-300 z-50 bg-lightMode ${
-        visible ? "translate-y-0" : "-translate-y-full"
-      }`}
-    >
+    <header className="fixed top-0 left-0 w-full dark:bg-darkMode shadow-sm z-50 bg-lightMode">
       <div className="flex justify-between items-center max-w-6xl mx-auto p-4">
         <Link href="/" className="leading-none">
           <>

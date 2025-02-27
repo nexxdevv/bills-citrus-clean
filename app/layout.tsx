@@ -16,7 +16,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="dark:bg-darkMode bg-lightMode bg-[repeating-linear-gradient(-45deg,#99999949_1px,#3c5c4426_1px,transparent_2px,transparent_18px)] mt-20">
+      <body className="dark:bg-darkMode bg-lightMode  mt-20">
         <AuthProvider>
           <CartProvider>
             <Header />

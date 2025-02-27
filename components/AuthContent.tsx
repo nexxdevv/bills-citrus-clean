@@ -33,8 +33,8 @@ export default function AuthPage() {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen px-6 md:px-12  text-gray-900">
-      <div className="w-full max-w-md bg-lightMode p-8 rounded-2xl shadow-xl">
-        <h1 className="text-3xl font-semibold text-center mb-6">
+      <div className="w-full max-w-md bg-lightMode p-8 rounded-2xl shadow-xl dark:bg-darkLight">
+        <h1 className="text-3xl font-semibold text-center mb-6 dark:text-slate-50">
           {isRegistering ? "Create an Account" : "Welcome Back"}
         </h1>
         <form onSubmit={handleSubmit} className="space-y-4">
@@ -73,7 +73,7 @@ export default function AuthPage() {
             Continue with Google
           </Button>
           <p
-            className="text-gray-600 text-sm cursor-pointer hover:underline"
+            className="text-gray-600 text-sm cursor-pointer dark:text-slate-50"
             onClick={() => setIsRegistering(!isRegistering)}
           >
             {isRegistering
