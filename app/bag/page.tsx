@@ -2,7 +2,6 @@
 
 import { useCart } from "@/context/CartContext"
 import Image from "next/image"
-import Link from "next/link"
 import { Plus, Minus, Trash } from "lucide-react"
 import { useAuth } from "@/context/AuthContext"
 
